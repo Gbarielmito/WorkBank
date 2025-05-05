@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkBank - Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      .fade-slide-enter {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+      .fade-slide-enter-active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .fade-slide-exit {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+      .fade-slide-exit-active {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+    </style>
+  </head>
+  <body class="bg-[#181A1B] text-white min-h-screen relative overflow-x-hidden">
+    <!-- Onda animada SVG com CSS no topo -->
+    <div class="absolute top-0 left-0 w-full overflow-hidden h-32 md:h-48 z-0 pointer-events-none">
+      <svg class="w-full h-full" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D4FF3F" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#232526" stop-opacity="0.1"/>
+          </linearGradient>
+        </defs>
+        <path id="onda" fill="url(#grad1)" d="M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z">
+          <animate attributeName="d" dur="6s" repeatCount="indefinite"
+            values="M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                    M0,120 C360,200 1080,80 1440,120 L1440,320 L0,320 Z;
+                    M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z" />
+        </path>
+      </svg>
+    </div>
+    <!-- Gradiente decorativo no rodapé -->
+    <div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-lime-400/10 via-[#232526]/30 to-transparent blur-2xl z-0"></div>
+    <!-- Header -->
+    <header class="w-full flex items-center justify-between px-8 py-4 bg-[#181A1B] border-b border-[#232526]">
+      <div class="flex items-center gap-2">
+        <div class="bg-lime-400 rounded-md p-1">
+          <!-- Ícone fictício do logo -->
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+        </div>
+        <span class="font-bold text-xl text-white">WorkBank</span>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm">
+        <a href="#" class="hover:text-lime-400 transition">Início</a>
+        <a href="#" class="hover:text-lime-400 transition">Carreira</a>
+        <a href="#" class="hover:text-lime-400 transition">Sobre</a>
+        <a href="#" class="hover:text-lime-400 transition">Segurança</a>
+      </nav>
+      <div class="flex gap-4">
+        <a href="#" class="hidden md:block px-5 py-2 rounded-full bg-transparent border border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-[#181A1B] transition">Cadastro</a>
+        <a href="#" class="px-5 py-2 rounded-full bg-lime-400 text-[#181A1B] font-bold hover:bg-lime-300 transition">Entrar</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="px-8 md:px-20 py-12 flex flex-col md:flex-row items-center justify-between gap-12 bg-[#181A1B]">
+      <div class="max-w-xl">
+        <div class="mb-4 mt-10">
+          <span class="inline-flex items-center gap-2 px-3 py-1 bg-[#232526] rounded-full text-xs text-lime-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            Não é necessária LLC, nem verificação de crédito.
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-2">Bem-vindo ao WorkBank<br>Fortalecendo sua <span class="text-lime-400">Jornada Financeira</span></h1>
+        <p class="text-gray-300 mb-8">A missão do WorkBank é fornecer soluções bancárias abrangentes que capacitem indivíduos e empresas a atingir seus objetivos financeiros. Temos o compromisso de oferecer serviços personalizados e inovadores que priorizem as necessidades dos nossos clientes.</p>
+        <a href="#" class="inline-block px-7 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition">Abra uma conta</a>
+      </div>
+      <!-- Widget de transações -->
+      <div class="w-full max-w-sm bg-[#1F2123] rounded-2xl shadow-lg p-6 relative">
+        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#232526] px-4 py-2 rounded-full flex items-center gap-2 text-lime-400 text-sm font-bold shadow">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          + $5000,00 Renda Mensal
+        </div>
+        <div class="mt-8">
+          <h3 class="text-lg font-semibold mb-2">Suas transações</h3>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between bg-[#232526] rounded-lg px-3 py-2">
+              <div class="flex items-center gap-2">
+                <span class="bg-lime-400 text-[#181A1B] rounded-full p-1 flex items-center justify-center">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Eduardo" class="w-6 h-6 rounded-full object-cover" />
+                </span>
+                <span class="text-sm">Transação<br><span class="font-bold">Eduardo</span></span>
+              </div>
+              <span class="text-red-400 font-bold">-$68.00</span>
+            </div>
+            <div class="flex items-center justify-between bg-[#232526] rounded-lg px-3 py-2 opacity-60">
+              <div class="flex items-center gap-2">
+                <span class="bg-lime-400 text-[#181A1B] rounded-full p-1 flex items-center justify-center">
+                  <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Foto de Arthur" class="w-6 h-6 rounded-full object-cover" />
+                </span>
+                <span class="text-sm">Transação<br><span class="font-bold">Arthur</span></span>
+              </div>
+              <span class="text-red-400 font-bold">-$90.00</span>
+            </div>
+            <div class="flex items-center justify-between bg-[#232526] rounded-lg px-3 py-2 opacity-40">
+              <div class="flex items-center gap-2">
+                <span class="bg-lime-400 text-[#181A1B] rounded-full p-1 flex items-center justify-center">
+                  <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Foto de João" class="w-6 h-6 rounded-full object-cover" />
+                </span>
+                <span class="text-sm">Transação<br><span class="font-bold">João</span></span>
+              </div>
+              <span class="text-red-400 font-bold">-$43.00</span>
+            </div>
+          </div>
+        </div>
+        <!-- Troca de dinheiro dinâmica -->
+        <div class="mt-6 bg-[#181A1B] rounded-xl p-4">
+          <h4 class="text-sm font-semibold mb-2">Troca de dinheiro</h4>
+          <form id="currency-form" class="flex flex-col gap-3">
+            <div class="flex gap-2">
+              <select id="from-currency" class="rounded px-2 py-1 bg-[#232526] text-white border border-[#232526] focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="BRL">BRL</option>
+                <option value="INR">INR</option>
+                <option value="GBP">GBP</option>
+              </select>
+              <span class="text-lime-400 font-bold">→</span>
+              <select id="to-currency" class="rounded px-2 py-1 bg-[#232526] text-white border border-[#232526] focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="BRL">BRL</option>
+                <option value="INR">INR</option>
+                <option value="GBP">GBP</option>
+              </select>
+            </div>
+            <input
+              id="amount"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="Valor"
+              required
+              class="rounded px-2 py-1 bg-[#232526] text-white border border-[#232526] focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition"
+            />
+            <button type="submit" class="w-full py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Converter</button>
+          </form>
+          <div id="conversion-result" class="mt-3 text-lime-400 font-bold"></div>
+        </div>
+        <div class="flex gap-2 mt-4 justify-end">
+          <span class="bg-[#232526] rounded-full px-2 py-1 text-lime-400 text-xs">Moedas Suportadas</span>
+          <span class="bg-[#232526] rounded-full px-2 py-1 text-lime-400 text-xs flex items-center gap-1">€ $ £ ₹</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Produtos -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-white">Nossos</span> <span class="text-lime-400">Produtos</span></h2>
+      <p class="text-gray-300 mb-10 max-w-2xl">Descubra uma gama de produtos bancários abrangentes e personalizáveis no WorkBank, projetados para atender às suas necessidades e aspirações financeiras exclusivas</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Verificação de contas</h3>
+          <p class="text-gray-400">Tenha acesso fácil e prático aos seus fundos com nossa variedade de opções de conta corrente. Aproveite recursos como serviços bancários online e móveis, cartões de débito e acesso gratuito a caixas eletrônicos.</p>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow">
+          <div class="mb-4">
+            <!-- Ícone de moeda com cifrão para Contas Poupança -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9" stroke="#D4FF3F" stroke-width="2" fill="#232526" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m0 0a2 2 0 100-4 2 2 0 000 4zm0 0v2" stroke="#D4FF3F" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Contas Poupança</h3>
+          <p class="text-gray-400">Aumente suas economias com nossos taxas de juros competitivas e opções flexíveis de conta poupança. Seja para economizar para um objetivo específico ou para aumentar seu patrimônio ao longo do tempo, temos a conta certa para você.</p>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow">
+          <div class="mb-4">
+            <!-- Ícone de casa com cifrão para Empréstimos e Hipotecas -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.75L12 4l9 6.75" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.75V19a2 2 0 002 2h11a2 2 0 002-2v-8.25" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 17v-2m0 0a2 2 0 100-4 2 2 0 000 4zm0 0v2" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Empréstimos e hipotecas</h3>
+          <p class="text-gray-400">Realize seus sonhos com nossas opções flexíveis de empréstimos e financiamentos imobiliários. De empréstimos pessoais a financiamentos imobiliários, nossos experientes agentes de crédito estão aqui para orientá-lo em todo o processo de solicitação e ajudá-lo a garantir os fundos necessários.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Casos de Uso -->
+    <section class="px-8 md:px-32 py-16 bg-[#181A1B] relative">
+      <!-- Figuras 3D SVG inline -->
+      <svg class="absolute left-0 top-10 w-24 opacity-70 z-30" viewBox="0 0 64 64" fill="none" style="pointer-events:none;">
+        <rect x="8" y="16" width="32" height="32" rx="6" fill="#D4FF3F" stroke="#232526" stroke-width="4"/>
+        <rect x="24" y="8" width="32" height="32" rx="6" fill="#232526" stroke="#D4FF3F" stroke-width="4"/>
+      </svg>
+      <svg class="absolute right-0 top-40 w-20 opacity-60 z-30" viewBox="0 0 64 64" fill="none" style="pointer-events:none;">
+        <circle cx="32" cy="32" r="24" fill="#D4FF3F" stroke="#232526" stroke-width="4"/>
+        <ellipse cx="32" cy="40" rx="16" ry="8" fill="#232526" opacity="0.3"/>
+      </svg>
+      <svg class="absolute left-1/2 -translate-x-1/2 -bottom-10 w-16 opacity-50 z-30" viewBox="0 0 64 64" fill="none" style="pointer-events:none;">
+        <ellipse cx="32" cy="48" rx="20" ry="8" fill="#D4FF3F"/>
+        <rect x="12" y="16" width="40" height="32" rx="12" fill="#232526" stroke="#D4FF3F" stroke-width="4"/>
+      </svg>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-lime-400">Casos</span> de uso</h2>
+      <p class="text-gray-300 mb-10 max-w-2xl">No WorkBank, atendemos às diversas necessidades de indivíduos e empresas, oferecendo uma ampla gama de soluções financeiras</p>
+      <div class="grid md:grid-cols-2 gap-8 mb-10">
+        <div class="bg-[#1F2123] rounded-2xl p-8 grid grid-cols-2 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Carteira para Gerenciando finanças pessoais -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="7" width="18" height="10" rx="3" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <rect x="15" y="11" width="2" height="2" rx="1" fill="#D4FF3F" />
+              </svg>
+            </div>
+            <span class="text-sm">Gerenciando finanças pessoais</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Porquinho para Economizando para o Futuro -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <ellipse cx="12" cy="14" rx="7" ry="5" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <circle cx="9" cy="13" r="1" fill="#D4FF3F" />
+                <rect x="11" y="10" width="2" height="2" rx="1" fill="#D4FF3F" />
+              </svg>
+            </div>
+            <span class="text-sm">Economizando para o Futuro</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Casa para Casa própria -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.75L12 4l9 6.75" stroke="#D4FF3F" stroke-width="2"/>
+                <rect x="7" y="13" width="10" height="7" rx="2" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="text-sm">Casa própria</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Chapéu de formatura para Financiamento da Educação -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M2 12l10-5 10 5-10 5-10-5z" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <path d="M12 17v-5" stroke="#D4FF3F" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="text-sm">Financiamento da Educação</span>
+          </div>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col justify-center">
+          <h3 class="text-2xl font-bold mb-4">Para Pessoas</h3>
+          <p class="text-gray-300 mb-6">Para pessoas físicas, nossos serviços de financiamento imobiliário abrem caminho para a aquisição de uma casa própria, e nossos empréstimos pessoais flexíveis oferecem suporte vital em diversos momentos da vida. Também priorizamos o planejamento da aposentadoria, garantindo um futuro financeiramente seguro para nossos clientes.</p>
+          <div class="flex gap-8">
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">78%</span>
+              <p class="text-xs text-gray-400">Planejamento seguro de aposentadoria</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">63%</span>
+              <p class="text-xs text-gray-400">Consolidação de dívida administrável</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">91%</span>
+              <p class="text-xs text-gray-400">Redução de encargos financeiros</p>
+            </div>
+          </div>
+          <button class="mt-6 px-6 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Saber mais</button>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col justify-center">
+          <h3 class="text-2xl font-bold mb-4">Para negócios</h3>
+          <p class="text-gray-300 mb-6">Para empresas, impulsionamos o crescimento com soluções de capital de giro que otimizam o fluxo de caixa, e nossas opções de financiamento personalizados impulsionam a expansão dos negócios. Sejam quais forem suas aspirações financeiras, o WorkBank está comprometido em fornecer as ferramentas e o suporte certos para alcançá-las.</p>
+          <div class="flex gap-8">
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">65%</span>
+              <p class="text-xs text-gray-400">Gestão de Fluxo de Caixa</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">70%</span>
+              <p class="text-xs text-gray-400">Impulsione a expansão dos negócios</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">45%</span>
+              <p class="text-xs text-gray-400">Simplifique o processamento da folha de pagamento</p>
+            </div>
+          </div>
+          <button class="mt-6 px-6 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Saiba Mais</button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 grid grid-cols-2 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Lâmpada para Startups e Empreendedores -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3.5 5.5V18a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3.5C17.5 13.5 19 11.5 19 9a7 7 0 0 0-7-7z" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <rect x="10" y="19" width="4" height="2" rx="1" fill="#D4FF3F" />
+              </svg>
+            </div>
+            <span class="text-sm">Startups e Empreendedores</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Gráfico de barras para Gestão de Fluxo de Caixa -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <rect x="4" y="12" width="3" height="8" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <rect x="10" y="8" width="3" height="12" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <rect x="16" y="4" width="3" height="16" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="text-sm">Gestão de Fluxo de Caixa</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Seta para cima para Expansão de Negócios -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="#D4FF3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-sm">Expansão de Negócios</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <!-- Mão segurando moeda para Soluções de pagamento -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 15v2a2 2 0 002 2h7a2 2 0 002-2v-2" fill="#232526" stroke="#D4FF3F" stroke-width="2"/>
+                <circle cx="17" cy="9" r="2" fill="#D4FF3F" stroke="#D4FF3F" stroke-width="1.5"/>
+                <path d="M5 15v-2a2 2 0 012-2h6a2 2 0 012 2v2" stroke="#D4FF3F" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <span class="text-sm">Soluções de pagamento</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Recursos -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-white">Nossos</span> <span class="text-lime-400">Recursos</span></h2>
+      <p class="text-gray-300 mb-10 max-w-2xl">Experimente uma série de recursos poderosos no WorkBank, incluindo serviços bancários on-line integrados, transações seguras e insights financeiros personalizados, todos projetados para aprimorar sua experiência bancária</p>
+      <!-- Interações do usuário -->
+      <div class="flex flex-wrap gap-4 mb-10">
+        <a href="#" class="px-5 py-2 rounded-full bg-lime-400 text-[#181A1B] font-semibold shadow hover:bg-lime-300 transition">Acessar App Web</a>
+        <button id="toggle-dicas" onclick="toggleDicas()" class="px-5 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold border border-lime-400 hover:bg-lime-400 hover:text-[#181A1B] transition">Dicas Rápidas</button>
+      </div>
+      <!-- Cards de dicas rápidas -->
+      <div id="cards-dicas" class="hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-4 text-left">
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col gap-4">
+            <span class="text-lime-400 font-bold">Banco on-line</span>
+            <span class="text-lime-400 font-bold">Ferramentas Financeiras</span>
+            <span class="text-lime-400 font-bold">Suporte ao Cliente</span>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Acesso à conta 24 horas por dia, 7 dias por semana</h3>
+            <p class="text-gray-400">Aproveite a praticidade de acessar suas contas a qualquer hora e em qualquer lugar através da nossa plataforma bancária online segura. Consulte saldos, transfira fundos e pague contas com facilidade.</p>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Aplicativo de banco móvel</h3>
+            <p class="text-gray-400">Mantenha-se conectado às suas finanças em qualquer lugar com nosso aplicativo bancário móvel intuitivo. Gerencie suas contas, deposite cheques e faça pagamentos facilmente pelo seu smartphone ou tablet.</p>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Transações seguras</h3>
+            <p class="text-gray-400">Fique tranquilo sabendo que suas transações estão protegidas por medidas de segurança líderes do setor. Utilizamos criptografia e autenticação multifator para proteger suas informações financeiras.</p>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Pagamento de contas e transferências</h3>
+            <p class="text-gray-400">Economize tempo e evite multas por atraso com nosso prático serviço de pagamento de contas. Configure pagamentos recorrentes ou faça transferências únicas entre suas contas com apenas alguns cliques.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Perguntas Frequentes -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-lime-400">Perguntas</span> Frequentes</h2>
+      <p class="text-gray-300 mb-10">Ainda tem alguma dúvida? Entre em contato com nossa equipe pelo e-mail <span class="text-lime-400">support@workbank.com</span>.</p>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">Como abro uma conta no WorkBank?</h3>
+          <p class="text-gray-400 flex-1">Abrir uma conta no WorkBank é fácil. Basta acessar nosso site e clicar no botão "Abrir uma Conta". Siga as instruções, forneça as informações necessárias e conclua o processo de inscrição. Se tiver alguma dúvida ou precisar de ajuda, nossa equipe de suporte ao cliente está à disposição para ajudar.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">Quais documentos preciso fornecer para solicitar um empréstimo?</h3>
+          <p class="text-gray-400 flex-1">Os documentos necessários para solicitar um empréstimo podem variar dependendo do tipo de empréstimo que você está solicitando. Geralmente, você precisará fornecer documentos de identificação (como passaporte ou carteira de habilitação), comprovantes de renda (como holerites ou declarações de imposto de renda) e informações sobre a garantia (se aplicável). Nossos agentes de crédito orientarão você sobre os requisitos específicos durante o processo de solicitação.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">Como posso acessar minhas contas on-line?</h3>
+          <p class="text-gray-400 flex-1">Acessar suas contas online é simples e seguro. Visite nosso site e clique no botão "Login". Digite seu nome de usuário e senha para acessar suas contas. Se você ainda não se cadastrou no internet banking, clique no botão "Inscreva-se agora" e siga o processo de cadastro. Se precisar de ajuda, nossa equipe de suporte ao cliente está disponível para orientá-lo.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">Minhas transações e informações pessoais são seguras?</h3>
+          <p class="text-gray-400 flex-1">No WorkBank, priorizamos a segurança das suas transações e informações pessoais. Utilizamos criptografia líder do setor e autenticação multifator para garantir a proteção dos seus dados. Além disso, atualizamos regularmente nossas medidas de segurança para nos mantermos à frente de ameaças emergentes. Você pode fazer transações bancárias com confiança, sabendo que contamos com sistemas de segurança robustos.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <button class="px-6 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Carregar todas as perguntas frequentes</button>
+      </div>
+    </section>
+
+    <!-- Seção Depoimentos -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-white">Nossos</span> <span class="text-lime-400">Depoimentos</span></h2>
+      <p class="text-gray-300 mb-10">Descubra como o WorkBank transformou vidas com soluções digitais inovadoras e atendimento personalizado. Veja por que nossos clientes confiam em nós para uma jornada financeira segura e próspera.</p>
+      <div class="flex gap-4 justify-center mb-8">
+        <button id="prev-comment" class="w-10 h-10 flex items-center justify-center rounded-full bg-[#232526] text-lime-400 hover:bg-lime-400 hover:text-[#181A1B] transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button id="next-comment" class="w-10 h-10 flex items-center justify-center rounded-full bg-[#232526] text-lime-400 hover:bg-lime-400 hover:text-[#181A1B] transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div id="comments-carousel" class="grid md:grid-cols-3 gap-8">
+        <!-- Os comentários serão inseridos via JS -->
+      </div>
+      <div class="flex justify-center mt-10">
+        <a href="#" class="px-7 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition">Abra sua Conta</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#181A1B] border-t border-[#232526] px-8 md:px-20 py-10 mt-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-lime-400 rounded-md p-1">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+          </div>
+          <span class="font-bold text-xl text-white">WorkBank</span>
+        </div>
+        <nav class="flex gap-8 text-sm">
+          <a href="#" class="hover:text-lime-400 transition">Início</a>
+          <a href="#" class="hover:text-lime-400 transition">Carreiras</a>
+          <a href="#" class="hover:text-lime-400 transition">Sobre</a>
+          <a href="#" class="hover:text-lime-400 transition">Segurança</a>
+        </nav>
+        <div class="flex flex-col md:flex-row gap-2 md:gap-6 items-start md:items-center">
+          <span class="flex items-center gap-2 text-lime-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12H8m8 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg> support@workbank.com</span>
+          <span class="flex items-center gap-2 text-lime-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5h2l.4 2M7 13h10l1.4-7H6.6M7 13l-1.4 7h10.8L17 13M7 13V6a1 1 0 011-1h8a1 1 0 011 1v7"/></svg> +79 91813 23 2309</span>
+          <span class="flex items-center gap-2 text-lime-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Feira de Santana</span>
+        </div>
+      </div>
+      <div class="flex gap-4 mb-4">
+        <a href="#" class="bg-lime-400 rounded-full p-2"><svg class="w-5 h-5 text-[#181A1B]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6a4.28 4.28 0 01-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 012 19.54a12.13 12.13 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.38-.01-.57A8.7 8.7 0 0024 4.59a8.5 8.5 0 01-2.54.7z"/></svg></a>
+        <a href="#" class="bg-lime-400 rounded-full p-2"><svg class="w-5 h-5 text-[#181A1B]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6a4.28 4.28 0 01-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 012 19.54a12.13 12.13 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.38-.01-.57A8.7 8.7 0 0024 4.59a8.5 8.5 0 01-2.54.7z"/></svg></a>
+        <a href="#" class="bg-lime-400 rounded-full p-2"><svg class="w-5 h-5 text-[#181A1B]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.5 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.88v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v4.74zm0 0"/></svg></a>
+      </div>
+      <div class="text-gray-400 text-sm flex flex-col md:flex-row md:justify-between items-center">
+        <span>WorkBank Todos os direitos reservados</span>
+        <span class="flex gap-4"><a href="#" class="hover:text-lime-400">política de Privacidade</a> | <a href="#" class="hover:text-lime-400">Termos de Serviço</a></span>
+      </div>
+    </footer>
+
+    <script>
+    document.getElementById('currency-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const from = document.getElementById('from-currency').value;
+      const to = document.getElementById('to-currency').value;
+      const amount = document.getElementById('amount').value.trim();
+      const resultDiv = document.getElementById('conversion-result');
+
+      // Validação simples
+      if (!amount || isNaN(amount) || Number(amount) <= 0) {
+        resultDiv.textContent = 'Digite um valor válido maior que zero.';
+        return;
+      }
+      if (from === to) {
+        resultDiv.textContent = 'Selecione moedas diferentes para converter.';
+        return;
+      }
+
+      resultDiv.textContent = 'Convertendo...';
+
+      try {
+        const res = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`);
+        const data = await res.json();
+        if (data.rates && data.rates[to]) {
+          resultDiv.textContent = `${amount} ${from} = ${data.rates[to].toFixed(2)} ${to}`;
+        } else {
+          resultDiv.textContent = 'Erro ao converter. Tente novamente.';
+        }
+      } catch (err) {
+        resultDiv.textContent = 'Erro ao conectar à API.';
+      }
+    });
+
+    function toggleDicas() {
+      const cards = document.getElementById('cards-dicas');
+      const btn = document.getElementById('toggle-dicas');
+      if (cards.classList.contains('hidden')) {
+        cards.classList.remove('hidden');
+        btn.textContent = 'Voltar';
+      } else {
+        cards.classList.add('hidden');
+        btn.textContent = 'Dicas Rápidas';
+      }
+    }
+
+    const comments = [
+      { name: 'Angela', text: 'O WorkBank é meu parceiro financeiro de confiança há anos. Seu atendimento personalizado e suas soluções bancárias digitais inovadoras tornaram a gestão das minhas finanças muito mais fácil.' },
+      { name: 'Gabriel', text: 'Recentemente, abri meu próprio negócio e o WorkBank tem sido fundamental para me ajudar a abrir minhas contas comerciais e garantir o financiamento necessário. Sua orientação especializada e soluções personalizadas foram inestimáveis.' },
+      { name: 'Emily G', text: 'Adoro a praticidade do aplicativo de mobile banking WorkBank. Ele me permite maior controle das minhas finanças e fazer transações em qualquer lugar. O aplicativo é fácil de usar e seguro, o que me dá tranquilidade.' },
+      { name: 'Lucas', text: 'O suporte ao cliente do WorkBank é excelente! Sempre que precisei de ajuda, fui atendido rapidamente e com muita atenção.' },
+      { name: 'Marina', text: 'A interface do app é muito intuitiva e bonita. Consigo fazer tudo o que preciso sem complicação.' },
+      {
+        name: 'Angela',
+        text: 'O WorkBank é meu parceiro financeiro de confiança há anos. Seu atendimento personalizado e suas soluções bancárias digitais inovadoras tornaram a gestão das minhas finanças muito mais fácil.',
+      },
+      {
+        name: 'Gabriel',
+        text: 'Recentemente, abri meu próprio negócio e o WorkBank tem sido fundamental para me ajudar a abrir minhas contas comerciais e garantir o financiamento necessário. Sua orientação especializada e soluções personalizadas foram inestimáveis.',
+      },
+      {
+        name: 'Emily G',
+        text: 'Adoro a praticidade do aplicativo de mobile banking WorkBank. Ele me permite maior controle das minhas finanças e fazer transações em qualquer lugar. O aplicativo é fácil de usar e seguro, o que me dá tranquilidade.',
+      },
+      {
+        name: 'Lucas',
+        text: 'O suporte ao cliente do WorkBank é excelente! Sempre que precisei de ajuda, fui atendido rapidamente e com muita atenção.',
+      },
+      {
+        name: 'Marina',
+        text: 'A interface do app é muito intuitiva e bonita. Consigo fazer tudo o que preciso sem complicação.',
+      },
+      {
+        name: 'Carlos',
+        text: 'As taxas do WorkBank são muito competitivas e as opções de investimento me ajudaram a crescer meu patrimônio.',
+      },
+    ];
+    let start = 0;
+    const perPage = 3;
+    function renderComments() {
+      const container = document.getElementById('comments-carousel');
+      container.innerHTML = '';
+      for (let i = start; i < Math.min(start + perPage, comments.length); i++) {
+        const c = comments[i];
+        container.innerHTML += `
+          <div class='bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow'>
+            <svg class='w-8 h-8 text-lime-400 mb-4' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path d='M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6A8.38 8.38 0 0112.5 3a8.5 8.5 0 018.5 8.5z' stroke-linecap='round' stroke-linejoin='round'/></svg>
+            <p class='text-gray-300 mb-4'>${c.text}</p>
+            <span class='text-lime-400 font-bold'>${c.name}</span>
+          </div>
+        `;
+      }
+    }
+    document.getElementById('prev-comment').onclick = function() {
+      start = Math.max(0, start - perPage);
+      renderComments();
+    };
+    document.getElementById('next-comment').onclick = function() {
+      if (start + perPage < comments.length) {
+        start += perPage;
+        renderComments();
+      }
+    };
+    renderComments();
+    </script>
+  </body>
+</html> 
