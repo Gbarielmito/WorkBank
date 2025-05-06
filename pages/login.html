@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkBank - Login</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%23181A1B'/><path d='M7 7h4v4H7V7zm6 6h4v4h-4v-4z' fill='%23D4FF3F'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+  </head>
+  <body class="bg-[#181A1B] text-white min-h-screen relative overflow-hidden">
+    <!-- Fundo animado com gradiente -->
+    <div class="absolute inset-0 -z-10 animate-gradient bg-gradient-to-br from-[#232526] via-[#181A1B] to-[#232526] opacity-90"></div>
+    <!-- Textura SVG sutil -->
+    <svg class="absolute inset-0 w-full h-full -z-10 opacity-20" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="2" fill="#D4FF3F" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+    <!-- Figura decorativa esquerda: círculo menor -->
+    <svg class="hidden md:block absolute left-[-60px] top-32 w-[140px] h-[140px] opacity-30 z-0" viewBox="0 0 140 140" fill="none" style="pointer-events:none;">
+      <ellipse cx="70" cy="70" rx="60" ry="60" fill="#D4FF3F" stroke="#232526" stroke-width="10"/>
+    </svg>
+    <!-- Figura decorativa direita: hexágono grande -->
+    <svg class="hidden md:block absolute right-[-120px] top-16 w-[340px] h-[340px] opacity-25 z-0" viewBox="0 0 340 340" fill="none" style="pointer-events:none;">
+      <polygon points="170,30 310,100 310,240 170,310 30,240 30,100" fill="#232526" stroke="#D4FF3F" stroke-width="16"/>
+      <polygon points="170,70 270,125 270,215 170,270 70,215 70,125" fill="#D4FF3F" opacity="0.5"/>
+    </svg>
+
+    <!-- Header -->
+    <header class="w-full flex items-center justify-between px-8 py-4 bg-[#181A1B] border-b border-[#232526]">
+      <div class="flex items-center gap-2">
+        <div class="bg-lime-400 rounded-md p-1">
+          <!-- Ícone fictício do logo -->
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+        </div>
+        <span class="font-bold text-xl text-white">WorkBank</span>
+      </div>
+    </header>
+
+    <main class="max-w-xl mx-auto px-2 sm:px-4 py-2 md:py-4 z-10 relative flex items-center justify-center min-h-[80vh]">
+      <div class="bg-[#1F2123] rounded-2xl p-4 sm:p-8 shadow-lg w-full">
+        <h1 class="text-2xl font-bold mb-6 text-center">Entrar na sua conta</h1>
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label for="email" class="block text-sm font-medium mb-1">E-mail</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+          <div>
+            <label for="senha" class="block text-sm font-medium mb-1">Senha</label>
+            <input type="password" id="senha" name="senha" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+          <div id="login-erro" class="text-red-400 text-sm font-semibold hidden"></div>
+          <button type="submit" class="w-full mt-6 px-6 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition">
+            Entrar
+          </button>
+        </form>
+        <p class="text-center text-sm text-gray-400 mt-6">
+          Ainda não tem uma conta? <a href="cadastro.html" class="text-lime-400 hover:underline">Criar conta</a>
+        </p>
+      </div>
+    </main>
+    <script>
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('senha').value;
+        const erroDiv = document.getElementById('login-erro');
+        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+        if (usuario) {
+          // Login bem-sucedido
+          localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+          window.location.href = 'dashboard.html';
+        } else {
+          erroDiv.textContent = 'E-mail ou senha incorretos.';
+          erroDiv.classList.remove('hidden');
+        }
+      });
+    </script>
+  </body>
+</html> 

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkBank - Cadastro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/cadastro.css">
+  </head>
+  <body class="bg-[#181A1B] text-white min-h-screen relative overflow-hidden">
+    <!-- Fundo animado com gradiente -->
+    <div class="absolute inset-0 -z-10 animate-gradient bg-gradient-to-br from-[#232526] via-[#181A1B] to-[#232526] opacity-90"></div>
+    <!-- Textura SVG sutil -->
+    <svg class="absolute inset-0 w-full h-full -z-10 opacity-20" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="2" fill="#D4FF3F" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+    <!-- Figuras decorativas SVG -->
+    <svg class="hidden md:block absolute left-[-60px] top-32 w-[140px] h-[140px] opacity-30 z-0" viewBox="0 0 140 140" fill="none" style="pointer-events:none;">
+      <ellipse cx="70" cy="70" rx="60" ry="60" fill="#D4FF3F" stroke="#232526" stroke-width="10"/>
+    </svg>
+    <svg class="hidden md:block absolute right-[-120px] top-16 w-[340px] h-[340px] opacity-25 z-0" viewBox="0 0 340 340" fill="none" style="pointer-events:none;">
+      <polygon points="170,30 310,100 310,240 170,310 30,240 30,100" fill="#232526" stroke="#D4FF3F" stroke-width="16"/>
+      <polygon points="170,70 270,125 270,215 170,270 70,215 70,125" fill="#D4FF3F" opacity="0.5"/>
+    </svg>
+    <svg class="absolute left-1/2 -translate-x-1/2 bottom-0 w-16 opacity-30 z-0" viewBox="0 0 64 64" fill="none" style="pointer-events:none;">
+      <ellipse cx="32" cy="48" rx="20" ry="8" fill="#D4FF3F"/>
+      <rect x="12" y="16" width="40" height="32" rx="12" fill="#232526" stroke="#D4FF3F" stroke-width="4"/>
+    </svg>
+    <style>
+      @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradientMove 10s ease-in-out infinite;
+      }
+    </style>
+    <!-- Header -->
+    <header class="w-full flex items-center justify-between px-8 py-4 bg-[#181A1B] border-b border-[#232526]">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="bg-lime-400 rounded-md p-1">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+        </div>
+        <span class="font-bold text-xl text-white">WorkBank</span>
+      </a>
+    </header>
+
+    <!-- Formulário de Cadastro -->
+    <main class="max-w-xl mx-auto px-2 sm:px-4 py-2 md:py-4 z-10 relative flex items-center justify-center min-h-[80vh]">
+      <div class="bg-[#1F2123] rounded-2xl p-4 sm:p-8 shadow-lg w-full">
+        <h1 class="text-2xl font-bold mb-6 text-center">Criar sua conta</h1>
+        
+        <form id="cadastro-form" class="space-y-4">
+          <div>
+            <label for="nome" class="block text-sm font-medium mb-1">Nome completo</label>
+            <input type="text" id="nome" name="nome" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium mb-1">E-mail</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+
+          <div>
+            <label for="cpf" class="block text-sm font-medium mb-1">CPF</label>
+            <input type="text" id="cpf" name="cpf" required maxlength="14" class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+
+          <div>
+            <label for="telefone" class="block text-sm font-medium mb-1">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+
+          <div>
+            <label for="senha" class="block text-sm font-medium mb-1">Senha</label>
+            <input type="password" id="senha" name="senha" required minlength="8" class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+            <p class="text-xs text-gray-400 mt-1">A senha deve ter pelo menos 8 caracteres</p>
+          </div>
+
+          <div>
+            <label for="confirmar-senha" class="block text-sm font-medium mb-1">Confirmar senha</label>
+            <input type="password" id="confirmar-senha" name="confirmar-senha" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+          </div>
+
+          <div class="flex items-center gap-2 mt-6">
+            <input type="checkbox" id="termos" name="termos" required class="w-4 h-4 rounded border-[#232526] text-lime-400 focus:ring-lime-400">
+            <label for="termos" class="text-sm text-gray-300">
+              Li e concordo com os <a href="#" class="text-lime-400 hover:underline">Termos de Uso</a> e <a href="#" class="text-lime-400 hover:underline">Política de Privacidade</a>
+            </label>
+          </div>
+
+          <button type="submit" class="w-full mt-6 px-6 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition">
+            Criar conta
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-400 mt-6">
+          Já tem uma conta? <a href="#" class="text-lime-400 hover:underline">Faça login</a>
+        </p>
+      </div>
+    </main>
+
+    <script>
+      // Máscara para CPF
+      document.getElementById('cpf').addEventListener('input', function (e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+        e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+      });
+
+      // Máscara para telefone
+      document.getElementById('telefone').addEventListener('input', function (e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+      });
+
+      // Validação do formulário
+      document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const cpf = document.getElementById('cpf').value;
+        const telefone = document.getElementById('telefone').value;
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmar-senha').value;
+        
+        if (senha !== confirmarSenha) {
+          alert('As senhas não coincidem!');
+          return;
+        }
+
+        // Verifica se já existe usuário com o mesmo email
+        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+        if (usuarios.some(u => u.email === email)) {
+          alert('Já existe uma conta cadastrada com este e-mail.');
+          return;
+        }
+
+        // Salva o novo usuário
+        usuarios.push({ nome, email, cpf, telefone, senha });
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        alert('Cadastro realizado com sucesso! Agora você pode fazer login.');
+        window.location.href = 'login.html';
+      });
+    </script>
+  </body>
+</html> 

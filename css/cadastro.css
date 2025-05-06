@@ -1,0 +1,38 @@
+body { 
+  font-family: 'Inter', sans-serif; 
+}
+
+/* Estilos para inputs */
+.input-field {
+  @apply w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition;
+}
+
+/* Estilos para labels */
+.input-label {
+  @apply block text-sm font-medium mb-1;
+}
+
+/* Estilos para o botão de submit */
+.submit-button {
+  @apply w-full mt-6 px-6 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition;
+}
+
+/* Estilos para links */
+.link {
+  @apply text-lime-400 hover:underline;
+}
+
+/* Estilos para o container do formulário */
+.form-container {
+  @apply bg-[#1F2123] rounded-2xl p-8 shadow-lg;
+}
+
+/* Estilos para o checkbox */
+.checkbox {
+  @apply w-4 h-4 rounded border-[#232526] text-lime-400 focus:ring-lime-400;
+}
+
+/* Estilos para mensagens de ajuda */
+.help-text {
+  @apply text-xs text-gray-400 mt-1;
+} 
