@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faturas - WorkBank</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%23181A1B'/><path d='M7 7h4v4H7V7zm6 6h4v4h-4v-4z' fill='%23D4FF3F'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'lime': {
+              400: '#a3e635',
+              500: '#84cc16',
+              600: '#65a30d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#181A1B] text-white min-h-screen">
+  <div class="flex min-h-screen">
+    <!-- Menu lateral -->
+    <aside class="w-20 md:w-64 bg-[#1F2123] flex flex-col items-center py-8 shadow-lg">
+      <div class="mb-10 flex flex-col items-center">
+        <div class="bg-lime-400 rounded-md p-2 mb-2">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+        </div>
+        <span class="font-bold text-lg hidden md:block text-white">WorkBank</span>
+      </div>
+      <nav class="flex flex-col gap-6 w-full items-center md:items-start">
+        <a href="dashboard.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#232526] text-gray-300 w-16 md:w-48">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span class="hidden md:inline">Dashboard</span>
+        </a>
+        <a href="faturas.html" class="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#232526] text-lime-400 font-bold shadow-md w-16 md:w-48">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+          </svg>
+          <span class="hidden md:inline">Faturas</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#232526] text-gray-300 w-16 md:w-48">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span class="hidden md:inline">Carteiras</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#232526] text-gray-300 w-16 md:w-48">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="hidden md:inline">Atividade</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#232526] text-gray-300 w-16 md:w-48">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          <span class="hidden md:inline">Analytics</span>
+        </a>
+      </nav>
+      <div class="mt-auto flex flex-col gap-2 w-full items-center md:items-start">
+        <a href="#" class="flex items-center gap-2 px-4 py-2 text-xs text-gray-300 hover:text-lime-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Ajuda
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 text-xs text-gray-300 hover:text-lime-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          Configurações
+        </a>
+      </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="flex-1 p-4 md:p-10 bg-[#181A1B]">
+      <div class="space-y-6">
+        <!-- Cabeçalho -->
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold">Faturas</h1>
+          <button onclick="abrirModal()" class="bg-lime-500 hover:bg-lime-600 text-black px-4 py-2 rounded-lg transition">
+            Nova Fatura
+          </button>
+        </div>
+
+        <!-- Filtros -->
+        <div class="bg-[#1F2123] rounded-2xl p-6 shadow">
+          <div class="flex flex-wrap gap-4">
+            <div class="flex-1 min-w-[200px]">
+              <label class="block text-sm text-gray-400 mb-2">Status</label>
+              <select class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+                <option>Todos</option>
+                <option>Pendente</option>
+                <option>Pago</option>
+                <option>Atrasado</option>
+              </select>
+            </div>
+            <div class="flex-1 min-w-[200px]">
+              <label class="block text-sm text-gray-400 mb-2">Data</label>
+              <input type="date" class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+            </div>
+            <div class="flex-1 min-w-[200px]">
+              <label class="block text-sm text-gray-400 mb-2">Cliente</label>
+              <input type="text" placeholder="Buscar cliente..." class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de Faturas -->
+        <div class="bg-[#1F2123] rounded-2xl p-6 shadow">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="text-left text-sm text-gray-400 border-b border-[#232526]">
+                  <th class="pb-4">Número</th>
+                  <th class="pb-4">Cliente</th>
+                  <th class="pb-4">Data</th>
+                  <th class="pb-4">Valor</th>
+                  <th class="pb-4">Status</th>
+                  <th class="pb-4">Ações</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#232526]">
+                <tr class="hover:bg-[#232526] transition">
+                  <td class="py-4">#INV-001</td>
+                  <td>João Silva</td>
+                  <td>15/03/2024</td>
+                  <td>R$ 1.500,00</td>
+                  <td><span class="px-3 py-1 rounded-full text-xs bg-green-900 text-green-400">Pago</span></td>
+                  <td>
+                    <div class="flex gap-2">
+                      <button class="text-lime-400 hover:text-lime-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </button>
+                      <button class="text-blue-400 hover:text-blue-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                      </button>
+                      <button class="text-red-400 hover:text-red-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-[#232526] transition">
+                  <td class="py-4">#INV-002</td>
+                  <td>Maria Santos</td>
+                  <td>14/03/2024</td>
+                  <td>R$ 2.300,00</td>
+                  <td><span class="px-3 py-1 rounded-full text-xs bg-yellow-900 text-yellow-400">Pendente</span></td>
+                  <td>
+                    <div class="flex gap-2">
+                      <button class="text-lime-400 hover:text-lime-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </button>
+                      <button class="text-blue-400 hover:text-blue-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                      </button>
+                      <button class="text-red-400 hover:text-red-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-[#232526] transition">
+                  <td class="py-4">#INV-003</td>
+                  <td>Pedro Oliveira</td>
+                  <td>13/03/2024</td>
+                  <td>R$ 3.750,00</td>
+                  <td><span class="px-3 py-1 rounded-full text-xs bg-red-900 text-red-400">Atrasado</span></td>
+                  <td>
+                    <div class="flex gap-2">
+                      <button class="text-lime-400 hover:text-lime-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </button>
+                      <button class="text-blue-400 hover:text-blue-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                      </button>
+                      <button class="text-red-400 hover:text-red-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Paginação -->
+          <div class="flex justify-between items-center mt-6">
+            <div class="text-sm text-gray-400">
+              Mostrando 1-3 de 12 faturas
+            </div>
+            <div class="flex gap-2">
+              <button class="px-3 py-1 rounded-lg bg-[#232526] text-gray-400 hover:text-white transition">Anterior</button>
+              <button class="px-3 py-1 rounded-lg bg-lime-400 text-[#181A1B]">1</button>
+              <button class="px-3 py-1 rounded-lg bg-[#232526] text-gray-400 hover:text-white transition">2</button>
+              <button class="px-3 py-1 rounded-lg bg-[#232526] text-gray-400 hover:text-white transition">3</button>
+              <button class="px-3 py-1 rounded-lg bg-[#232526] text-gray-400 hover:text-white transition">Próximo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal para Nova/Editar Fatura -->
+  <div id="modalFatura" class="fixed inset-0 bg-black/50 hidden items-center justify-center">
+    <div class="bg-[#1F2123] rounded-2xl p-6 w-full max-w-md">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold" id="modalTitulo">Nova Fatura</h2>
+        <button onclick="fecharModal()" class="text-gray-400 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <form id="formFatura" class="space-y-4">
+        <input type="hidden" id="faturaId">
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Cliente</label>
+          <input type="text" id="cliente" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+        </div>
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Data</label>
+          <input type="date" id="data" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+        </div>
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Valor</label>
+          <input type="number" id="valor" required step="0.01" class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+        </div>
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Status</label>
+          <select id="status" required class="w-full px-4 py-2 rounded-lg bg-[#232526] border border-[#232526] text-white focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition">
+            <option value="Pendente">Pendente</option>
+            <option value="Pago">Pago</option>
+            <option value="Atrasado">Atrasado</option>
+          </select>
+        </div>
+        <div class="flex justify-end gap-2 mt-6">
+          <button type="button" onclick="fecharModal()" class="px-4 py-2 rounded-lg bg-[#232526] text-gray-400 hover:text-white transition">Cancelar</button>
+          <button type="submit" class="px-4 py-2 rounded-lg bg-lime-400 text-[#181A1B] font-semibold hover:bg-lime-500 transition">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../javascript/faturas.js"></script>
+    
+</body>
+</html> 
