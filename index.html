@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   </head>
   <body class="bg-[#181A1B] text-white min-h-screen relative overflow-x-hidden">
     <!-- Onda animada SVG com CSS no topo -->
@@ -460,6 +461,8 @@
     </footer>
 
     <script>
+    
+
     document.getElementById('currency-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const from = document.getElementById('from-currency').value;
@@ -562,6 +565,27 @@
       }
     };
     renderComments();
+
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      
+      const { user, error } = await supabase.auth.signIn({
+        email: email,
+        password: senha,
+      });
+
+      if (error) {
+        const erroDiv = document.getElementById('login-erro');
+        erroDiv.textContent = 'E-mail ou senha incorretos.';
+        erroDiv.classList.remove('hidden');
+      } else {
+        localStorage.setItem('usuarioLogado', JSON.stringify(user));
+        window.location.href = 'dashboard.html';
+      }
+    });
     </script>
   </body>
 </html> 

@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorkBank - Cadastro</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/cadastro.css">
+    
   </head>
   <body class="bg-[#181A1B] text-white min-h-screen relative overflow-hidden">
     <!-- Fundo animado com gradiente -->
@@ -47,6 +49,9 @@
     </style>
     <!-- Header -->
     <header class="w-full flex items-center justify-between px-8 py-4 bg-[#181A1B] border-b border-[#232526]">
+      <script src="../javascript/mascaras_cadastro.js"></script>
+      <script src="../javascript/supabase_cadastro.js"></script>
+      
       <a href="../index.html" class="flex items-center gap-2">
         <div class="bg-lime-400 rounded-md p-1">
           <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
@@ -110,49 +115,6 @@
       </div>
     </main>
 
-    <script>
-      // Máscara para CPF
-      document.getElementById('cpf').addEventListener('input', function (e) {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
-        e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' + x[3] : '') + (x[4] ? '-' + x[4] : '');
-      });
-
-      // Máscara para telefone
-      document.getElementById('telefone').addEventListener('input', function (e) {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
-        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-      });
-
-      // Validação do formulário
-      document.getElementById('cadastro-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
-        const cpf = document.getElementById('cpf').value;
-        const telefone = document.getElementById('telefone').value;
-        const senha = document.getElementById('senha').value;
-        const confirmarSenha = document.getElementById('confirmar-senha').value;
-        
-        if (senha !== confirmarSenha) {
-          alert('As senhas não coincidem!');
-          return;
-        }
-
-        // Verifica se já existe usuário com o mesmo email
-        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-        if (usuarios.some(u => u.email === email)) {
-          alert('Já existe uma conta cadastrada com este e-mail.');
-          return;
-        }
-
-        // Salva o novo usuário
-        usuarios.push({ nome, email, cpf, telefone, senha });
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-        alert('Cadastro realizado com sucesso! Agora você pode fazer login.');
-        window.location.href = 'login.html';
-      });
-    </script>
+    
   </body>
 </html> 

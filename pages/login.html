@@ -10,8 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body class="bg-[#181A1B] text-white min-h-screen relative overflow-hidden">
+    <script src="../javascript/interaçãologin_locasotrage.js"></script>
+    <script src="../javascript/supabase_atualizalogin.js"></script>
     <!-- Fundo animado com gradiente -->
     <div class="absolute inset-0 -z-10 animate-gradient bg-gradient-to-br from-[#232526] via-[#181A1B] to-[#232526] opacity-90"></div>
     <!-- Textura SVG sutil -->
@@ -66,23 +69,5 @@
         </p>
       </div>
     </main>
-    <script>
-      document.getElementById('login-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-        const erroDiv = document.getElementById('login-erro');
-        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
-        if (usuario) {
-          // Login bem-sucedido
-          localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-          window.location.href = 'dashboard.html';
-        } else {
-          erroDiv.textContent = 'E-mail ou senha incorretos.';
-          erroDiv.classList.remove('hidden');
-        }
-      });
-    </script>
   </body>
 </html> 
