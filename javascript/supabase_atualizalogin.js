@@ -11,12 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const erroDiv = document.getElementById('login-erro');
 
     try {
-      console.log('Tentando login...');
+      // 1. Tentativa de login
       const { data, error } = await supabaseClient.auth.signInWithPassword({
-        email: email,
+        email,
         password: senha,
       });
-      console.log('Resultado login:', data, error);
 
       if (error) {
         erroDiv.textContent = 'E-mail ou senha incorretos.';
@@ -38,12 +37,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // 3. Salvar dados do usuário e perfil
-      localStorage.setItem('usuarioLogado', JSON.stringify({
+      const userData = {
         ...data.user,
         profile: profile
-      }));
+      };
+      
+      localStorage.setItem('usuarioLogado', JSON.stringify(userData));
 
-      window.location.href = 'dashboard.html';
+      // 4. Redirecionar para o dashboard
+      window.location.replace('dashboard.html');
 
     } catch (err) {
       erroDiv.textContent = 'Erro ao fazer login.';
