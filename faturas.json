@@ -5,14 +5,6 @@
     "cliente": "Naty",
     "data": "2025-05-07",
     "valor": "40",
-    "status": "Pendente"
-  },
-  {
-    "id": 2,
-    "numero": "#INV-002",
-    "cliente": "Kaique",
-    "data": "2025-05-21",
-    "valor": "190",
-    "status": "Pendente"
+    "status": "Atrasado"
   }
 ]

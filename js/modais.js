@@ -9,15 +9,17 @@ function fecharModal(id) {
 
 // Funções de confirmação (chamam o backend e atualizam os valores)
 async function confirmarDeposito() {
+
   const valor = Number(document.getElementById('valorDeposito').value);
   if (valor > 0) {
     await fetch('http://localhost:3001/api/depositar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ valor })
-    });
+    }); 
     fecharModal('modalDepositar');
     atualizarValoresCarteira();
+    registrarHistorico('deposito', valor);
   }
 }
 
@@ -31,6 +33,7 @@ async function confirmarSaque() {
     });
     fecharModal('modalSacar');
     atualizarValoresCarteira();
+    registrarHistorico('saque', valor);
   }
 }
 
