@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:5000/api';
 let faturas = [];
 let faturaEditando = null;
 
-// Carregar faturas ao iniciar
+
 document.addEventListener('DOMContentLoaded', () => {
     carregarFaturas();
     
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Funções do Modal
+// Funções do popup
 function abrirModal(fatura = null) {
     const modal = document.getElementById('modalFatura');
     const titulo = document.getElementById('modalTitulo');
@@ -128,7 +128,7 @@ async function excluirFatura(id) {
     }
 }
 
-// Função para mostrar notificações
+//  mostra notificações
 function mostrarNotificacao(mensagem, tipo) {
     const notificacao = document.createElement('div');
     notificacao.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white ${
@@ -180,7 +180,7 @@ function atualizarTabela() {
     });
 }
 
-// Função para editar fatura
+// editar fatura
 function editarFatura(id) {
     const fatura = faturas.find(f => f.id === id);
     if (fatura) {

@@ -7,7 +7,7 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Simulação de dados em memória
+// Simulação de daods de memoria
 let carteira = {
   saldo: 0.00,
   investimentos: 0.00,
@@ -25,12 +25,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/carteira.html'));
 });
 
-// Consultar saldo e investimentos
+// Consulta saldo e investimentos
 app.get('/api/carteira', (req, res) => {
   res.json({ saldo: carteira.saldo, investimentos: carteira.investimentos, saques: carteira.saques });
 });
 
-// Consultar histórico
+// Consulta histórico
 app.get('/api/historico', (req, res) => {
   res.json({ historico: carteira.historico });
 });

@@ -1,13 +1,13 @@
-// Função para abrir o modal
+
 function abrirModal(id) {
   document.getElementById(id).classList.remove('hidden');
 }
-// Função para fechar o modal
+
 function fecharModal(id) {
   document.getElementById(id).classList.add('hidden');
 }
 
-// Funções de confirmação (chamam o backend e atualizam os valores)
+// Funções de confirmações
 async function confirmarDeposito() {
 
   const valor = Number(document.getElementById('valorDeposito').value);
@@ -77,7 +77,7 @@ async function atualizarValoresCarteira() {
   }
 }
 
-// Associa os botões aos modais
+// organiza os botoes no popup
 window.addEventListener('DOMContentLoaded', function() {
   const botoes = document.querySelectorAll('.acao-rapida');
   if (botoes.length >= 4) {

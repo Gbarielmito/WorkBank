@@ -1,4 +1,4 @@
-// Função para formatar o valor de acordo com a moeda
+// formata o valor de acordo com a moeda
 window.formatarValor = function(valor, moeda) {
     try {
         const formatadores = {
@@ -16,7 +16,7 @@ window.formatarValor = function(valor, moeda) {
     }
 }
 
-// Função para salvar investimentos no localStorage
+// salva investimentos no localStorage
 window.salvarInvestimentos = function(investimentos) {
     try {
         localStorage.setItem('investimentos', JSON.stringify(investimentos));
@@ -25,7 +25,7 @@ window.salvarInvestimentos = function(investimentos) {
     }
 }
 
-// Função para carregar investimentos do localStorage
+// carrega investimentos do localStorage
 window.carregarInvestimentos = function() {
     try {
         const investimentos = JSON.parse(localStorage.getItem('investimentos')) || [];
@@ -36,7 +36,7 @@ window.carregarInvestimentos = function() {
     }
 }
 
-// Função para adicionar um novo investimento
+// adiciona um novo investimento
 window.adicionarInvestimento = function(nome, valor, moeda, vencimento = null, quantidade = null) {
     try {
         const investimentosContainer = document.getElementById('listaInvestimentos');
@@ -82,7 +82,7 @@ window.adicionarInvestimento = function(nome, valor, moeda, vencimento = null, q
     }
 }
 
-// Função para confirmar o investimento
+// confirma o investimento
 window.confirmarInvestimento = function() {
     try {
         const valor = parseFloat(document.getElementById('valorInvestimento').value);
@@ -135,7 +135,7 @@ window.confirmarInvestimento = function() {
     }
 }
 
-// Função para atualizar o saldo total
+// atualiza o saldo total
 window.atualizarSaldoTotal = function(valor, moeda) {
     try {
         const saldoTotalElement = document.getElementById('saldoTotal');
@@ -149,7 +149,7 @@ window.atualizarSaldoTotal = function(valor, moeda) {
     }
 }
 
-// Função para carregar todos os investimentos salvos
+// carrega todos os investimentos salvos
 window.carregarTodosInvestimentos = function() {
     try {
         const investimentos = carregarInvestimentos();
@@ -177,10 +177,10 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         console.log('Inicializando investimentos...');
         
-        // Carregar investimentos salvos
+        
         carregarTodosInvestimentos();
 
-        // Configurar botão de investir
+        // Configura botão de investir
         const botaoInvestir = document.querySelector('.acao-rapida:nth-child(4)');
         if (botaoInvestir) {
             botaoInvestir.addEventListener('click', function() {

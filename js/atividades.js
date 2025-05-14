@@ -1,6 +1,6 @@
 console.log('atividades.js carregado');
 
-// Função para registrar histórico de depósito ou saque no backend
+// registra histórico de depósito ou saque no backend
 function registrarHistorico(tipo, valor) {
   fetch('http://localhost:3001/api/historico', {
     method: 'POST',
@@ -13,7 +13,7 @@ function registrarHistorico(tipo, valor) {
   });
 }
 
-// Função para carregar e exibir o histórico na página de atividades
+// carrega e exibe o histórico na página de atividades
 async function carregarHistorico() {
   const resp = await fetch('/api/historico');
   const historico = await resp.json();
@@ -48,11 +48,11 @@ async function carregarHistorico() {
   });
 }
 
-// Carregar histórico automaticamente na página de atividades
+// carrega o histórico automaticamente na página de atividades
 if (window.location.pathname.includes('atividades.html')) {
   window.onload = carregarHistorico;
 }
 
-// Exporte as funções para uso em outros scripts
+// exporta as funções para uso em outros scripts
 window.registrarHistorico = registrarHistorico;
 window.carregarHistorico = carregarHistorico; 
