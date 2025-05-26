@@ -18,9 +18,9 @@
   {
     "id": 3,
     "numero": "#INV-003",
-    "cliente": "Gabriel",
+    "cliente": "Augusto",
     "data": "2025-05-22",
-    "valor": "2000",
-    "status": "Pago"
+    "valor": "400",
+    "status": "Pendente"
   }
 ]
