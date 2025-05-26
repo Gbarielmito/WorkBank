@@ -14,13 +14,5 @@
     "data": "2025-05-29",
     "valor": "1600",
     "status": "Pendente"
-  },
-  {
-    "id": 3,
-    "numero": "#INV-003",
-    "cliente": "Lorrane",
-    "data": "2025-05-21",
-    "valor": "901",
-    "status": "Pago"
   }
 ]
