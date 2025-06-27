@@ -20,6 +20,10 @@ def index():
 def serve_page(path):
     return send_from_directory('pages', path)
 
+@app.route('/seguranca')
+def seguranca():
+    return send_from_directory('pages', 'seguranca.html')
+
 @app.route('/js/<path:path>')
 def serve_js(path):
     return send_from_directory('js', path)
@@ -115,9 +119,9 @@ def registrar_historico():
     dados = request.json
     historico = carregar_historico()
     historico.append({
-        "tipo": dados['tipo'],  # "deposito" ou "saque"
+        "tipo": dados['tipo'],  
         "valor": dados['valor'],
-        "data": dados['data']    # string com data/hora
+        "data": dados['data']   
     })
     salvar_historico(historico)
     return jsonify({"mensagem": "Histórico registrado com sucesso!"}), 201

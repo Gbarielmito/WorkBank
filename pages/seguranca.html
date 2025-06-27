@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Segurança - WorkBank</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%23181A1B'/><path d='M7 7h4v4H7V7zm6 6h4v4h-4v-4z' fill='%23D4FF3F'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  </head>
+  <body class="bg-[#181A1B] text-white min-h-screen relative overflow-x-hidden">
+    <!-- Onda animada SVG com CSS no topo -->
+    <div class="absolute top-0 left-0 w-full overflow-hidden h-32 md:h-48 z-0 pointer-events-none">
+      <svg class="w-full h-full" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D4FF3F" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#232526" stop-opacity="0.1"/>
+          </linearGradient>
+        </defs>
+        <path id="onda" fill="url(#grad1)" d="M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z">
+          <animate attributeName="d" dur="6s" repeatCount="indefinite"
+            values="M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                    M0,120 C360,200 1080,80 1440,120 L1440,320 L0,320 Z;
+                    M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z" />
+        </path>
+      </svg>
+    </div>
+    <!-- Gradiente decorativo no rodapé -->
+    <div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-lime-400/10 via-[#232526]/30 to-transparent blur-2xl z-0"></div>
+    
+    <!-- Header -->
+    <header class="w-full flex items-center justify-between px-8 py-4 bg-[#181A1B] border-b border-[#232526]">
+      <div class="flex items-center gap-2">
+        <div class="bg-lime-400 rounded-md p-1">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+        </div>
+        <span class="font-bold text-xl text-white">WorkBank</span>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm">
+        <a href="../index.html" class="hover:text-lime-400 transition">Início</a>
+        <a href="carreira.html" class="hover:text-lime-400 transition">Carreira</a>
+        <a href="seguranca.html" class="text-lime-400 transition">Segurança</a>
+      </nav>
+      <div class="flex gap-4">
+        <a href="cadastro.html" class="hidden md:block px-5 py-2 rounded-full bg-transparent border border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-[#181A1B] transition">Cadastro</a>
+        <a href="login.html" class="px-5 py-2 rounded-full bg-lime-400 text-[#181A1B] font-bold hover:bg-lime-300 transition">Entrar</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="px-8 md:px-20 py-12 flex flex-col md:flex-row items-center justify-between gap-12 bg-[#181A1B]">
+      <div class="max-w-xl">
+        <div class="mb-4 mt-10">
+          <span class="inline-flex items-center gap-2 px-3 py-1 bg-[#232526] rounded-full text-xs text-lime-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Proteção de dados de nível bancário
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-2">Sua <span class="text-lime-400">Segurança</span><br>É Nossa Prioridade</h1>
+        <p class="text-gray-300 mb-8">No WorkBank, a segurança dos seus dados e transações é nossa máxima prioridade. Utilizamos as mais avançadas tecnologias de proteção para garantir que suas informações financeiras estejam sempre seguras.</p>
+        <a href="#recursos-seguranca" class="inline-block px-7 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition">Conheça Nossas Medidas</a>
+      </div>
+      <!-- Widget de segurança -->
+      <div class="w-full max-w-sm bg-[#1F2123] rounded-2xl shadow-lg p-6 relative">
+        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#232526] px-4 py-2 rounded-full flex items-center gap-2 text-lime-400 text-sm font-bold shadow">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          99.9% Proteção Garantida
+        </div>
+        <div class="mt-8">
+          <h3 class="text-lg font-semibold mb-2">Status de Segurança</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between bg-[#232526] rounded-lg px-3 py-2">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                <span class="text-sm">Criptografia SSL</span>
+              </div>
+              <span class="text-green-400 font-bold">Ativo</span>
+            </div>
+            <div class="flex items-center justify-between bg-[#232526] rounded-lg px-3 py-2">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                <span class="text-sm">Autenticação 2FA</span>
+              </div>
+              <span class="text-green-400 font-bold">Ativo</span>
+            </div>
+            <div class="flex items-center justify-between bg-[#232526] rounded-lg px-3 py-2">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                <span class="text-sm">Monitoramento 24/7</span>
+              </div>
+              <span class="text-green-400 font-bold">Ativo</span>
+            </div>
+          </div>
+        </div>
+        <!-- Verificador de força de senha -->
+        <div class="mt-6 bg-[#181A1B] rounded-xl p-4">
+          <h4 class="text-sm font-semibold mb-2">Verificador de Senha</h4>
+          <form id="password-form" class="flex flex-col gap-3">
+            <input
+              id="password-input"
+              type="password"
+              placeholder="Digite sua senha"
+              value=""
+              autocomplete="off"
+              data-form-type="other"
+              data-lpignore="true"
+              style="background-image: none !important;"
+              class="rounded px-2 py-1 bg-[#232526] text-white border border-[#232526] focus:border-lime-400 focus:ring-2 focus:ring-lime-400 outline-none transition"
+            />
+            <div id="password-strength" class="h-2 bg-[#232526] rounded-full overflow-hidden">
+              <div id="strength-bar" class="h-full bg-red-400 transition-all duration-300" style="width: 0%"></div>
+            </div>
+            <div id="strength-text" class="text-xs text-gray-400"></div>
+          </form>
+        </div>
+        <div class="flex gap-2 mt-4 justify-end">
+          <span class="bg-[#232526] rounded-full px-2 py-1 text-lime-400 text-xs">Segurança</span>
+          <span class="bg-[#232526] rounded-full px-2 py-1 text-lime-400 text-xs flex items-center gap-1">🔒 🛡️</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Recursos de Segurança -->
+    <section id="recursos-seguranca" class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-white">Recursos de</span> <span class="text-lime-400">Segurança</span></h2>
+      <p class="text-gray-300 mb-10 max-w-2xl">Conheça as tecnologias e medidas que utilizamos para proteger suas informações e transações financeiras</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Criptografia SSL/TLS</h3>
+          <p class="text-gray-400">Todas as suas transações são protegidas por criptografia SSL/TLS de 256 bits, garantindo que suas informações sejam transmitidas de forma segura entre seu dispositivo e nossos servidores.</p>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Autenticação Multifator</h3>
+          <p class="text-gray-400">Proteção adicional com autenticação de dois fatores (2FA), que requer uma segunda forma de verificação além da sua senha, como um código enviado por SMS ou aplicativo autenticador.</p>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col items-center text-center shadow">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Monitoramento Inteligente</h3>
+          <p class="text-gray-400">Sistemas avançados de monitoramento 24/7 que detectam e previnem atividades suspeitas em tempo real, protegendo sua conta contra fraudes e acessos não autorizados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Dicas de Segurança -->
+    <section class="px-8 md:px-32 py-16 bg-[#181A1B] relative">
+      <!-- Figuras 3D SVG inline -->
+      <svg class="absolute left-0 top-10 w-24 opacity-70 z-30" viewBox="0 0 64 64" fill="none" style="pointer-events:none;">
+        <rect x="8" y="16" width="32" height="32" rx="6" fill="#D4FF3F" stroke="#232526" stroke-width="4"/>
+        <rect x="24" y="8" width="32" height="32" rx="6" fill="#232526" stroke="#D4FF3F" stroke-width="4"/>
+      </svg>
+      <svg class="absolute right-0 top-40 w-20 opacity-60 z-30" viewBox="0 0 64 64" fill="none" style="pointer-events:none;">
+        <circle cx="32" cy="32" r="24" fill="#D4FF3F" stroke="#232526" stroke-width="4"/>
+        <ellipse cx="32" cy="40" rx="16" ry="8" fill="#232526" opacity="0.3"/>
+      </svg>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-lime-400">Dicas de</span> Segurança</h2>
+      <p class="text-gray-300 mb-10 max-w-2xl">Aprenda como proteger suas informações e evitar fraudes com nossas dicas de segurança</p>
+      <div class="grid md:grid-cols-2 gap-8 mb-10">
+        <div class="bg-[#1F2123] rounded-2xl p-8 grid grid-cols-2 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <span class="text-sm">Senhas Fortes</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </div>
+            <span class="text-sm">Verificar URLs</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+            <span class="text-sm">Não Compartilhar Dados</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="text-sm">Ativar 2FA</span>
+          </div>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col justify-center">
+          <h3 class="text-2xl font-bold mb-4">Proteção Pessoal</h3>
+          <p class="text-gray-300 mb-6">Sua segurança começa com você. Sempre use senhas únicas e fortes, nunca compartilhe informações pessoais por e-mail ou telefone, e sempre verifique se está no site oficial do WorkBank antes de fazer login.</p>
+          <div class="flex gap-8">
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">100%</span>
+              <p class="text-xs text-gray-400">Criptografia SSL</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">24/7</span>
+              <p class="text-xs text-gray-400">Monitoramento</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">99.9%</span>
+              <p class="text-xs text-gray-400">Uptime Seguro</p>
+            </div>
+          </div>
+          <button class="mt-6 px-6 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Mais Dicas</button>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-8 flex flex-col justify-center">
+          <h3 class="text-2xl font-bold mb-4">Detecção de Fraudes</h3>
+          <p class="text-gray-300 mb-6">Nossos sistemas avançados de inteligência artificial monitoram constantemente suas transações para detectar padrões suspeitos. Em caso de atividade não autorizada, você será notificado imediatamente.</p>
+          <div class="flex gap-8">
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">0.01%</span>
+              <p class="text-xs text-gray-400">Taxa de Fraude</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold"><1s</span>
+              <p class="text-xs text-gray-400">Tempo de Detecção</p>
+            </div>
+            <div>
+              <span class="text-lime-400 text-2xl font-bold">100%</span>
+              <p class="text-xs text-gray-400">Reembolso Garantido</p>
+            </div>
+          </div>
+          <button class="mt-6 px-6 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Saiba Mais</button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 grid grid-cols-2 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="text-sm">Monitoramento em Tempo Real</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-5 5v-5zM4 19h6v-6H4v6zM4 5h6V4a1 1 0 00-1-1H5a1 1 0 00-1 1v1zm0 0h6m-6 0H4m0 0V5m0 0V4a1 1 0 011-1h1a1 1 0 011 1v1z" />
+              </svg>
+            </div>
+            <span class="text-sm">Análise de Comportamento</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="text-sm">Notificações Instantâneas</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="text-sm">Bloqueio Automático</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Tipos de Fraude -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-white">Tipos de</span> <span class="text-lime-400">Fraude</span></h2>
+      <p class="text-gray-300 mb-10 max-w-2xl">Conheça os principais tipos de fraude e como se proteger contra eles</p>
+      
+      <div class="flex flex-wrap gap-4 mb-10">
+        <button id="toggle-fraudes" onclick="toggleFraudes()" class="px-5 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold border border-lime-400 hover:bg-lime-400 hover:text-[#181A1B] transition">Ver Tipos de Fraude</button>
+      </div>
+      
+      <div id="cards-fraudes" class="hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-4 text-left">
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col gap-4">
+            <span class="text-lime-400 font-bold">Phishing</span>
+            <span class="text-lime-400 font-bold">Vishing</span>
+            <span class="text-lime-400 font-bold">Smishing</span>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Phishing por E-mail</h3>
+            <p class="text-gray-400">Fraudadores enviam e-mails falsos se passando por instituições legítimas para roubar informações pessoais e financeiras. Nunca clique em links suspeitos ou forneça dados por e-mail.</p>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Vishing (Fraude por Telefone)</h3>
+            <p class="text-gray-400">Criminosos ligam se passando por funcionários bancários para obter informações confidenciais. O WorkBank nunca solicita dados pessoais por telefone.</p>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Smishing (SMS Fraudulento)</h3>
+            <p class="text-gray-400">Mensagens de texto falsas que tentam induzir o usuário a clicar em links maliciosos ou fornecer informações pessoais. Desconfie de SMS não solicitados.</p>
+          </div>
+          <div class="bg-[#1F2123] rounded-2xl p-4 md:p-8 flex flex-col justify-between">
+            <h3 class="font-bold text-lg mb-2">Malware e Ransomware</h3>
+            <p class="text-gray-400">Software malicioso que pode infectar seu dispositivo e roubar informações ou bloquear acesso aos seus arquivos. Mantenha sempre seu antivírus atualizado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Perguntas Frequentes -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-lime-400">Perguntas</span> Frequentes</h2>
+      <p class="text-gray-300 mb-10">Ainda tem alguma dúvida sobre segurança? Entre em contato com nossa equipe pelo e-mail <span class="text-lime-400">seguranca@workbank.com</span>.</p>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">Como sei se o site do WorkBank é legítimo?</h3>
+          <p class="text-gray-400 flex-1">Sempre verifique se o endereço começa com "https://" e se há um ícone de cadeado na barra de endereços. O domínio oficial é sempre "workbank.com". Nunca acesse links enviados por e-mail ou SMS.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">O que fazer se suspeitar de fraude?</h3>
+          <p class="text-gray-400 flex-1">Se você suspeitar de atividade fraudulenta, entre em contato imediatamente com nosso time de segurança pelo e-mail seguranca@workbank.com ou pelo telefone de emergência disponível 24/7.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">Como ativar a autenticação de dois fatores?</h3>
+          <p class="text-gray-400 flex-1">Para ativar o 2FA, acesse suas configurações de segurança no app ou site do WorkBank. Você pode escolher entre receber códigos por SMS ou usar um aplicativo autenticador como Google Authenticator.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-6 flex flex-col h-full">
+          <h3 class="font-bold mb-2">O WorkBank reembolsa perdas por fraude?</h3>
+          <p class="text-gray-400 flex-1">Sim, o WorkBank oferece proteção completa contra fraudes. Se você seguir nossas diretrizes de segurança e reportar a fraude imediatamente, garantimos o reembolso integral dos valores perdidos.</p>
+          <button class="mt-4 flex items-center gap-2 self-start text-lime-400 font-semibold hover:underline transition">
+            Leia mais
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <button class="px-6 py-2 rounded-full bg-[#232526] text-lime-400 font-semibold hover:bg-lime-400 hover:text-[#181A1B] transition">Carregar todas as perguntas frequentes</button>
+      </div>
+    </section>
+
+    <!-- Seção Contato de Emergência -->
+    <section class="px-8 md:px-20 py-16 bg-[#181A1B]">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-white">Contato de</span> <span class="text-lime-400">Emergência</span></h2>
+      <p class="text-gray-300 mb-10">Em caso de suspeita de fraude ou atividade suspeita, entre em contato conosco imediatamente</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-[#1F2123] rounded-2xl p-8 text-center">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Telefone 24/7</h3>
+          <p class="text-gray-400 mb-4">0800 123 4567</p>
+          <p class="text-sm text-gray-500">Atendimento de emergência disponível 24 horas por dia, 7 dias por semana</p>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 text-center">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">E-mail de Segurança</h3>
+          <p class="text-gray-400 mb-4">seguranca@workbank.com</p>
+          <p class="text-sm text-gray-500">Resposta em até 2 horas para casos de emergência</p>
+        </div>
+        <div class="bg-[#1F2123] rounded-2xl p-8 text-center">
+          <div class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-lime-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Chat Online</h3>
+          <p class="text-gray-400 mb-4">Disponível no App</p>
+          <p class="text-sm text-gray-500">Atendimento instantâneo através do aplicativo WorkBank</p>
+        </div>
+      </div>
+      <div class="flex justify-center mt-10">
+        <a href="../index.html" class="px-7 py-3 rounded-full bg-lime-400 text-[#181A1B] font-bold text-lg shadow hover:bg-lime-300 transition">Voltar ao Início</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#181A1B] border-t border-[#232526] px-8 md:px-20 py-10 mt-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-lime-400 rounded-md p-1">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#181A1B"/><path d="M7 7h4v4H7V7zm6 6h4v4h-4v-4z" fill="#D4FF3F"/></svg>
+          </div>
+          <span class="font-bold text-xl text-white">WorkBank</span>
+        </div>
+      </div>
+      <div class="flex gap-4 mb-4">
+        <a href="#" class="bg-lime-400 rounded-full p-2"><svg class="w-5 h-5 text-[#181A1B]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6a4.28 4.28 0 01-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 012 19.54a12.13 12.13 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.38-.01-.57A8.7 8.7 0 0024 4.59a8.5 8.5 0 01-2.54.7z"/></svg></a>
+        <a href="#" class="bg-lime-400 rounded-full p-2"><svg class="w-5 h-5 text-[#181A1B]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6a4.28 4.28 0 01-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 012 19.54a12.13 12.13 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.38-.01-.57A8.7 8.7 0 0024 4.59a8.5 8.5 0 01-2.54.7z"/></svg></a>
+        <a href="#" class="bg-lime-400 rounded-full p-2"><svg class="w-5 h-5 text-[#181A1B]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.5 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.88v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v4.74zm0 0"/></svg></a>
+      </div>
+      <div class="text-gray-400 text-sm flex flex-col md:flex-row md:justify-between items-center">
+        <span>WorkBank Todos os direitos reservados</span>
+        <span class="flex gap-4"><a href="#" class="hover:text-lime-400">Política de Privacidade</a> | <a href="#" class="hover:text-lime-400">Termos de Serviço</a></span>
+      </div>
+    </footer>
+
+    <script src="js/seguranca.js"></script>
+  </body>
+</html>
